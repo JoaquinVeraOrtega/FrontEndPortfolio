@@ -1,0 +1,115 @@
+
+<table class="table">
+    <tbody>
+      <tr>
+        <td><h3>Nombre</h3></td>
+        <td><h3>Titulo</h3></td>
+        <td><h3>Acerca de:</h3></td>
+       
+      </tr>
+      <tr *ngFor="let Persona of personas">
+        <td>{{Persona.nombre}}</td>
+        <td>{{Persona.titulo}}</td>
+        <td>{{Persona.acercaDe}}</td>
+        <td>
+          <!-- Button trigger modal -->
+          
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edtarPersona"
+            *ngIf="isLogged" (click)="seleccionarPersona(Persona.id,Persona.nombre,Persona.acercaDe,Persona.titulo)">
+            Editar
+          </button>
+          
+          
+          <!-- Modal -->
+          <div class="modal fade" id="edtarPersona" tabindex="-1" aria-labelledby="editmodal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="edtarPersona">Editar Persona</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form #f="ngForm" (ngSubmit)="editarPersona()" >
+                    <div class="mb-3">
+                      <label for="nombre" class="form-label">Nombre:</label>
+                      <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" required>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="acercaDe" class="form-label">Acerca de:</label>
+                      <input type="text" class="form-control" id="acercaDe" [(ngModel)]="acercaDe" name="acercaDe"
+                        required>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="titulo" class="form-label">Titulo:</label>
+                      <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo" name="titulo" required>
+                    </div>
+  
+                    <button type="submit" class="btn btn-primary" >Guardar cambios</button>
+                  
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+  
+        <td>
+          <button type="button" class="btn btn-danger" (click)="borrarPersona(Persona.id)" *ngIf="isLogged">Borrar</button>
+        </td>
+        
+      </tr>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarPersona"
+        *ngIf="isLogged">
+        Agregar persona
+      </button>
+  
+      <!-- Modal -->
+  
+      <div class="modal fade" id="agregarPersona" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar persona</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+  
+            <div class="modal-body">
+  
+              <form #f="ngForm" (ngSubmit)="agregarPersona()">
+                <div class="mb-3">
+                  <label for="nombre" class="form-label">Nombre:</label>
+                  <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" required>
+                </div>
+  
+                <div class="mb-3">
+                  <label for="acercaDe" class="form-label">Acerca de:</label>
+                  <input type="text" class="form-control" id="acercaDe" [(ngModel)]="acercaDe" name="acercaDe" required>
+                </div>
+  
+                <div class="mb-3">
+                  <label for="titulo" class="form-label">Titulo:</label>
+                  <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo" name="titulo" required>
+                </div>
+  
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+    </tbody>
+  
+  </table>

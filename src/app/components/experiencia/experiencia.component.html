@@ -1,0 +1,116 @@
+
+<table class="table">
+    <tbody>
+      <tr>
+        <td><h3>Puesto</h3></td>
+        <td><h3>Descripcion</h3></td>
+        <td><h3>Empresa</h3></td>
+       
+      </tr>
+      <tr *ngFor="let Experiencia of experiencias">
+        <td>{{Experiencia.puesto}}</td>
+        <td>{{Experiencia.descripcion}}</td>
+        <td>{{Experiencia.empresa}}</td>
+        <td>
+          <!-- Button trigger modal -->
+          
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarExperiencia"
+            *ngIf="isLogged" (click)="seleccionarExperiencia(Experiencia.id,Experiencia.puesto,Experiencia.descripcion,Experiencia.empresa)">
+            Editar
+          </button>
+          
+          
+          <!-- Modal -->
+          <div class="modal fade" id="editarExperiencia" tabindex="-1" aria-labelledby="editmodal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="edtarExperiencia">Editar experiencia</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form #f="ngForm" (ngSubmit)="editarExperiencia()" >
+                    <div class="mb-3">
+                      <label for="puesto" class="form-label">Puesto:</label>
+                      <input type="text" class="form-control" id="puesto" [(ngModel)]="puesto" name="puesto" required>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="descripcion" class="form-label">Descripcion:</label>
+                      <input type="text" class="form-control" id="descripcion" [(ngModel)]="descripcion" name="descripcion"
+                        required>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="empresa" class="form-label">Empresa:</label>
+                      <input type="text" class="form-control" id="empresa" [(ngModel)]="empresa" name="empresa" required>
+                    </div>
+  
+                    <button type="submit" class="btn btn-primary" >Guardar cambios</button>
+                  
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+  
+        <td>
+          <button type="button" class="btn btn-danger" (click)="borrarExperiencia(Experiencia.id)" *ngIf="isLogged">Borrar</button>
+        </td>
+        
+      </tr>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarExperiencia"
+        *ngIf="isLogged">
+        Agregar Experiencia
+      </button>
+  
+      <!-- Modal -->
+  
+      <div class="modal fade" id="agregarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar experiencia</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+  
+            <div class="modal-body">
+  
+              <form #f="ngForm" (ngSubmit)="agregarExperiencia()">
+                <div class="mb-3">
+                    <label for="puesto" class="form-label">Puesto:</label>
+                    <input type="text" class="form-control" id="puesto" [(ngModel)]="puesto" name="puesto" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripcion:</label>
+                    <input type="text" class="form-control" id="descripcion" [(ngModel)]="descripcion" name="descripcion"
+                      required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="empresa" class="form-label">Empresa:</label>
+                    <input type="text" class="form-control" id="empresa" [(ngModel)]="empresa" name="empresa" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" >Guardar cambios</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+    </tbody>
+  
+  </table>

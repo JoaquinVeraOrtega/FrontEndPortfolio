@@ -1,0 +1,116 @@
+
+<table class="table">
+    <tbody>
+      <tr>
+        <td><h3>Título</h3></td>
+        <td><h3>Institución</h3></td>
+        <td><h3>Período</h3></td>
+       
+      </tr>
+      <tr *ngFor="let Educacion of estudios">
+        <td>{{Educacion.titulo}}</td>
+        <td>{{Educacion.institucion}}</td>
+        <td>{{Educacion.periodo}}</td>
+        <td>
+          <!-- Button trigger modal -->
+          
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarEducacion"
+            *ngIf="isLogged" (click)="seleccionarEducacion(Educacion.id,Educacion.titulo,Educacion.institucion,Educacion.periodo)">
+            Editar
+          </button>
+          
+          
+          <!-- Modal -->
+          <div class="modal fade" id="editarEducacion" tabindex="-1" aria-labelledby="editarEducacion" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="editmodal">Editar Educación</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form #f="ngForm" (ngSubmit)="editarEducacion()" >
+                    <div class="mb-3">
+                      <label for="titulo" class="form-label">Título:</label>
+                      <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo" name="titulo" required>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="institucion" class="form-label">Institución:</label>
+                      <input type="text" class="form-control" id="institucion" [(ngModel)]="institucion" name="institucion"
+                        required>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="periodo" class="form-label">Período:</label>
+                      <input type="text" class="form-control" id="periodo" [(ngModel)]="periodo" name="periodo" required>
+                    </div>
+  
+                    <button type="submit" class="btn btn-primary" >Guardar cambios</button>
+                  
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+  
+        <td>
+          <button type="button" class="btn btn-danger" (click)="borrarEducacion(Educacion.id)" *ngIf="isLogged">Borrar</button>
+        </td>
+        
+      </tr>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        *ngIf="isLogged">
+        Agregar Educación
+      </button>
+  
+      <!-- Modal -->
+  
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Educación</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+  
+            <div class="modal-body">
+  
+              <form #f="ngForm" (ngSubmit)="agregarEducacion()">
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título:</label>
+                    <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo" name="titulo" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="institucion" class="form-label">Institución:</label>
+                    <input type="text" class="form-control" id="institucion" [(ngModel)]="institucion" name="institucion"
+                      required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="periodo" class="form-label">Período:</label>
+                    <input type="text" class="form-control" id="periodo" [(ngModel)]="periodo" name="periodo" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" >Guardar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+    </tbody>
+  
+  </table>

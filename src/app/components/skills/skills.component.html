@@ -1,0 +1,106 @@
+<table class="table">
+    <tbody>
+      <tr>
+        <td><h3>Nombre</h3></td>
+        <td><h3>Porcentaje</h3></td>
+        
+       
+      </tr>
+      <tr *ngFor="let Skill of skills">
+        <td>{{Skill.nombre}}</td>
+        <td>{{Skill.porcentaje}}%</td>
+
+        <td>
+          <!-- Button trigger modal -->
+          
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarSkill"
+            *ngIf="isLogged" (click)="seleccionarSkill(Skill.id,Skill.nombre,Skill.porcentaje)">
+            Editar
+          </button>
+          
+          
+          <!-- Modal -->
+          <div class="modal fade" id="editarSkill" tabindex="-1" aria-labelledby="editmodal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="edtarSkill">Editar Skill</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form #f="ngForm" (ngSubmit)="editarSkill()" >
+                    <div class="mb-3">
+                      <label for="nombre" class="form-label">Nombre:</label>
+                      <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" required>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="porcentaje" class="form-label">Porcentaje:</label>
+                      <input type="number" class="form-control" id="porcentaje" [(ngModel)]="porcentaje" name="porcentaje"
+                        required>
+                    </div>
+  
+                    <button type="submit" class="btn btn-primary" >Guardar cambios</button>
+                  
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+  
+        <td>
+          <button type="button" class="btn btn-danger" (click)="borrarSkill(Skill.id)" *ngIf="isLogged">Borrar</button>
+        </td>
+        
+      </tr>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarSkill"
+        *ngIf="isLogged">
+        Agregar skill
+      </button>
+  
+      <!-- Modal -->
+  
+      <div class="modal fade" id="agregarSkill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar skill</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+  
+            <div class="modal-body">
+  
+              <form #f="ngForm" (ngSubmit)="agregarSkill()">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="porcentaje" class="form-label">Porcentaje:</label>
+                    <input type="number" class="form-control" id="porcentaje" [(ngModel)]="porcentaje" name="porcentaje"
+                      required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" >Guardar cambios</button>
+                
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+    </tbody>
+  
+  </table>
