@@ -1,22 +1,25 @@
-<nav class="navbar" style="background-color: #e3f2fd;">
-    <h4 class="m-5">Barra de navegación</h4>
-    <button class="btn btn-primary m-5" (click)="irALogIn()" *ngIf="!isLogged">Iniciar Sesión</button>
-    <button class="btn btn-primary m-5" (click)="onLogOut()" *ngIf="isLogged">Cerrar Sesión</button>
-  </nav>
+<body>
+
+  <app-header></app-header>
+
   <app-persona></app-persona>
-  <br>
-  <br>
-  <app-educacion></app-educacion>
-  <br>
-  <br>
-  <app-proyectos></app-proyectos>
-  <br>
-  <br>
-  <app-skills></app-skills>
-  <br>
-  <br>
-  <app-experiencia></app-experiencia>
-  <br>
-  <br>
-  <app-contacto></app-contacto>
-  
+
+  <div class="container text-center">
+
+
+    <app-educacion></app-educacion>
+
+    <app-experiencia></app-experiencia>
+
+
+    <app-proyectos></app-proyectos>
+
+
+    <app-skills></app-skills>
+
+
+  </div>
+
+  <app-footer></app-footer>
+
+</body>

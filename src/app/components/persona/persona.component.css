@@ -1,0 +1,39 @@
+
+.lead {
+    margin-top: 45px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.about {
+    text-align: left;
+    margin-left: 40px;
+}
+
+h1 {
+    color: white;
+    font-size: 50px;
+    text-align: left;
+}
+
+.titulo {
+    color: white;
+    font-size: 20px;
+    text-align: left;
+}
+
+.persona {
+    background-image: url(../../../assets/img/helloWorld.jpg);
+    background-size: 100%;
+    background-position-y: 40%;
+    margin: 20px;
+    font-family: 'Brush Script MT';
+    color: white;
+}
+
+.profilepic {
+    width: 200px;
+    z-index: 1;
+    margin: 20px;
+    height: 250px;
+}

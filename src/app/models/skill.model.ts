@@ -1,32 +1,30 @@
 export class Skill {
-    
-    id?:number;
-    nombre:string = "";
-    porcentaje:number;
 
+    id?: number;
+    nombre: string = "";
+    porcentaje: number;
 
- constructor(nombre:string, porcentaje:number){
+    constructor(nombre: string, porcentaje: number) {
 
-    this.nombre = nombre;
-    this.porcentaje = porcentaje;
-    
- }
+        this.nombre = nombre;
+        this.porcentaje = porcentaje;
 
-    public get Nombre():string {
+    }
+
+    public get Nombre(): string {
         return this.nombre;
     }
 
-    public set Nombre(value:string){
+    public set Nombre(value: string) {
         this.nombre = value;
     }
 
-    public get Porcentaje():number {
+    public get Porcentaje(): number {
         return this.porcentaje;
-            }
-        
-     public set Porcentaje(value:number){
-                this.porcentaje = value;
-            }
+    }
 
+    public set Porcentaje(value: number) {
+        this.porcentaje = value;
+    }
 
 }

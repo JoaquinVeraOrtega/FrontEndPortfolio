@@ -12,14 +12,14 @@ import { EducacionComponent } from './components/educacion/educacion.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
-import { ContactoComponent } from './components/contacto/contacto.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LogInComponent }
 
-
-const appRoutes:Routes=[
-  {path:'', component:HomeComponent},
-  {path:'login', component:LogInComponent}
-  
-  ]
+]
 
 @NgModule({
   declarations: [
@@ -31,13 +31,16 @@ const appRoutes:Routes=[
     ProyectosComponent,
     SkillsComponent,
     ExperienciaComponent,
-    ContactoComponent
+    HeaderComponent,
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgCircleProgressModule.forRoot({})
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

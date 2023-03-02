@@ -1,32 +1,37 @@
 export class Contacto {
 
     id?: number;
-    plataforma: string = "";
-    link: string = "";
+    email: string = "";
+    github: string = "";
+    linkedin: string = "";
 
+    constructor(email: string, github: string, linkedin: string) {
 
-    constructor(plataforma: string, link: string) {
-
-        this.plataforma = plataforma;
-        this.link = link;
+        this.email = email;
+        this.github = github;
+        this.linkedin = linkedin;
 
     }
 
-    public get Plataforma(): string {
-        return this.plataforma;
+    public get Email(): string {
+        return this.email;
+    }
+    public set Email(value: string) {
+        this.email = value;
     }
 
-    public set Plataforma(value: string) {
-        this.plataforma = value;
+    public get Github(): string {
+        return this.github;
+    }
+    public set Github(value: string) {
+        this.github = value;
     }
 
-
-
-    public get Link(): string {
-        return this.link;
+    public get Linkedin(): string {
+        return this.linkedin;
+    }
+    public set Linkedin(value: string) {
+        this.linkedin = value;
     }
 
-    public set Link(value: string) {
-        this.link = value;
-    }
 }

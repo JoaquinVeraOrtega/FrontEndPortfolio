@@ -1,0 +1,15 @@
+.footer{
+    color: aliceblue;
+    height: 50px;
+    margin-top: 10px;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+  margin-top: 10px;
+}

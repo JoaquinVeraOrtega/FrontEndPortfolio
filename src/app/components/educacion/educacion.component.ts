@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Educacion } from 'src/app/models/educacion.model';
 import { EducacionService } from 'src/app/services/educacion.service';
 import { TokenService } from 'src/app/services/login-services/token.service';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-educacion',
@@ -81,6 +82,7 @@ this.educacionService.save(educ).subscribe(
   }
 
 ngOnInit(): void {
+  AOS.init();
   this.cargarListaEducacion();
   if(this.tokenService.getToken()){
     this.isLogged = true;
@@ -88,12 +90,12 @@ ngOnInit(): void {
     this.isLogged = false;
   }
 }
+
   onLogOut():void{
     this.tokenService.logOut();
     window.location.reload();
   }
   
-
   irALogIn(){
     this.router.navigate(['login']);
   }

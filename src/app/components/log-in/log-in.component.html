@@ -1,16 +1,40 @@
 
-<h2 class="m-5">Iniciar Sesión</h2>
-<form class="m-5" #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+<div class="page">
 
-  <div class="mb-3">
-    <label for="nombreUsuario" class="form-label">Usuario</label>
-    <input type="email" class="form-control" id="nombreUsuario" aria-describedby="emailHelp" [(ngModel)]="nombreUsuario" name="nombreUsuario" required >
+  <div class="container">
+
+    <div class="left puff-in-center">
+
+      <div class="login">Login</div>
+
+      <!-- Boton de Volver a Home -->
+      <div class="iniciars">
+        Volver al
+        <button class="button-81" role="button" (click)="irAInicio()">inicio</button>
+      </div>
+
+    </div>
+
+    <div class="right slide-in-fwd-right">
+
+      <div class="form">
+
+        <form class="form-horizontal" #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+
+          <label for="email">Usuario</label>
+          <input class="input" type="email" id="email" [(ngModel)]="nombreUsuario" name="nombreUsuario" required>
+
+          <label for="password">Contraseña</label>
+          <input class="input" type="password" id="password" [(ngModel)]="password" name="password" required>
+
+          <button type="submit" class="btn btn-secondary" role="button">LogIn</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" required >
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

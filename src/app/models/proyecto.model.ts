@@ -1,41 +1,40 @@
 export class Proyecto {
-    
-    id?:number;
-    nombre:string = "";
-    cliente:string = "";
-    link:string = "";
 
+    id?: number;
+    nombre: string = "";
+    cliente: string = "";
+    link: string = "";
 
- constructor(nombre:string, cliente:string, link:string){
+    constructor(nombre: string, cliente: string, link: string) {
 
-    this.nombre = nombre;
-    this.cliente = cliente;
-    this.link = link;
-    
- }
+        this.nombre = nombre;
+        this.cliente = cliente;
+        this.link = link;
 
-    public get Nombre():string {
+    }
+
+    public get Nombre(): string {
         return this.nombre;
     }
 
-    public set Nombre(value:string){
+    public set Nombre(value: string) {
         this.nombre = value;
     }
 
-    public get Cliente():string {
+    public get Cliente(): string {
         return this.cliente;
-            }
-        
-     public set Cliente(value:string){
-                this.cliente = value;
-            }
+    }
 
+    public set Cliente(value: string) {
+        this.cliente = value;
+    }
 
-public get Link():string {
+    public get Link(): string {
         return this.link;
-            }
-        
-     public set Link(value:string){
-                this.link = value;
-            }
+    }
+
+    public set Link(value: string) {
+        this.link = value;
+    }
+
 }

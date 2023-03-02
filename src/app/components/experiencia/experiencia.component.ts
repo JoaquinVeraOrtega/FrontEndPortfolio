@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/models/experiencia.model';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
 import { TokenService } from 'src/app/services/login-services/token.service';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-experiencia',
@@ -12,88 +13,86 @@ import { TokenService } from 'src/app/services/login-services/token.service';
 export class ExperienciaComponent {
   isLogged = false;
 
-  idParaEdit:number;
-  
+  idParaEdit: number;
+
   puesto: string;
   descripcion: string;
   empresa: string;
 
-  experiencias:Experiencia[]=[]
+  experiencias: Experiencia[] = []
 
   expe: Experiencia = null;
   expeEdit: Experiencia = null;
 
-  constructor(public experienciaService: ExperienciaService, private router:Router, private tokenService: TokenService){  }
+  constructor(public experienciaService: ExperienciaService, private router: Router, private tokenService: TokenService) { }
 
 
-  seleccionarExperiencia(id: number, puesto:string,descripcion:string,empresa:string){
-    this.idParaEdit=id;
-    this.puesto=puesto;
-    this.descripcion=descripcion;
-    this.empresa=empresa;
+  seleccionarExperiencia(id: number, puesto: string, descripcion: string, empresa: string) {
+    this.idParaEdit = id;
+    this.puesto = puesto;
+    this.descripcion = descripcion;
+    this.empresa = empresa;
   }
 
-  borrarExperiencia(id:number){
-    if(id != undefined){
+  borrarExperiencia(id: number) {
+    if (id != undefined) {
       this.experienciaService.delete(id).subscribe(
-        data=>{
+        data => {
           window.location.reload();
-        }, err=> {
+        }, err => {
           alert("Falló");
-        window.location.reload();
+          window.location.reload();
         }
       )
     }
   }
 
-  editarExperiencia():void{
+  editarExperiencia(): void {
     const expeEdit = new Experiencia(this.puesto, this.descripcion, this.empresa);
     this.experienciaService.update(this.idParaEdit, expeEdit).subscribe(
       data => {
         window.location.reload();
-      }, err=>{
+      }, err => {
         alert("Falló");
         window.location.reload();
       }
     )
   }
 
-  agregarExperiencia():void{
+  agregarExperiencia(): void {
     const expe = new Experiencia(this.puesto, this.descripcion, this.empresa)
-this.experienciaService.save(expe).subscribe(
-  data=> {
-    console.log("Persona agregada");
-    window.location.reload();
-    
-  }, err=>{
-    alert("Falló");
-    window.location.reload();
+    this.experienciaService.save(expe).subscribe(
+      data => {
+        console.log("Persona agregada");
+        window.location.reload();
+      }, err => {
+        alert("Falló");
+        window.location.reload();
+      }
+    )
   }
-  
-)
-  }
-  
+
   cargarListaExperiencias(): void {
     this.experienciaService.lista().subscribe(
       data => this.experiencias = data
     )
   }
 
-ngOnInit(): void {
-  this.cargarListaExperiencias();
-  if(this.tokenService.getToken()){
-    this.isLogged = true;
-  } else{
-    this.isLogged = false;
+  ngOnInit(): void {
+    AOS.init();
+    this.cargarListaExperiencias();
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
-}
-  onLogOut():void{
+  onLogOut(): void {
     this.tokenService.logOut();
     window.location.reload();
   }
-  
 
-  irALogIn(){
+  irALogIn() {
     this.router.navigate(['login']);
   }
 

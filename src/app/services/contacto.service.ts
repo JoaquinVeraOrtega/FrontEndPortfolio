@@ -12,23 +12,23 @@ export class ContactoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public lista(): Observable<Contacto[]>{
+  public lista(): Observable<Contacto[]> {
     return this.httpClient.get<Contacto[]>(this.URL + 'traer/lista');
   }
 
-  public save(contacto: Contacto): Observable<any>{
+  public save(contacto: Contacto): Observable<any> {
     return this.httpClient.post<any>(this.URL + 'agregar', contacto);
   }
 
-  public update(id: number, contacto: Contacto): Observable<any>{
+  public update(id: number, contacto: Contacto): Observable<any> {
     return this.httpClient.put<any>(this.URL + `editar/${id}`, contacto);
   }
 
-  public delete(id: number):Observable<any>{
+  public delete(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.URL + `borrar/${id}`);
   }
 
-  public getById(id: number): Observable<Contacto>{
+  public getById(id: number): Observable<Contacto> {
     return this.httpClient.get<Contacto>(this.URL + `traer/${id}`)
   }
 
