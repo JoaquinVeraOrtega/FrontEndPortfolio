@@ -9,7 +9,7 @@ import { NuevoUsuario } from '../../models/login-models/nuevo-usuario';
   providedIn: 'root'
 })
 export class AuthService {
-  authURL = 'http://localhost:8080/auth/'
+  authURL = 'http://portfoliobackend-joaquinveraortega.koyeb.app/auth/'
 
   constructor(private httpClient: HttpClient) { }
 

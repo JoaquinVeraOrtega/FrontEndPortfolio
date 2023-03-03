@@ -7,8 +7,8 @@ import { Educacion } from '../models/educacion.model';
   providedIn: 'root'
 })
 export class EducacionService {
-
-  URL = 'http://localhost:8080/educacion/'
+  
+  URL = 'http://portfoliobackend-joaquinveraortega.koyeb.app/educacion/'
 
   constructor(private httpClient: HttpClient) { }
 

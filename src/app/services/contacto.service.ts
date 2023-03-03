@@ -8,7 +8,7 @@ import { Contacto } from '../models/contacto.model';
 })
 export class ContactoService {
 
-  URL = 'http://localhost:8080/contacto/'
+  URL = 'http://portfoliobackend-joaquinveraortega.koyeb.app/contacto/'
 
   constructor(private httpClient: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { Skill } from '../models/skill.model';
 })
 export class SkillService {
 
-  URL = 'http://localhost:8080/skill/'
+  URL = 'http://portfoliobackend-joaquinveraortega.koyeb.app/skill/'
 
   constructor(private httpClient: HttpClient) { }
 
