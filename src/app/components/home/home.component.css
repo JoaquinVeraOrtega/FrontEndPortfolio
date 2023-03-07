@@ -1,4 +1,16 @@
+
+/* For width smaller than 400px: */
 body {
-     background-image: url(../../../assets/img/gralBackground.jpg);
-    background-attachment:scroll; 
-}
+     background-image: url(../../../assets/img/gralBackground-celus.jpg);
+     background-size: cover;
+     background-repeat: no-repeat;
+   }
+   
+   /* For width 400px and larger: */
+   @media only screen and (min-width: 400px) {
+     body {
+       background-image: url(../../../assets/img/gralBackground.jpg);
+       background-size: cover;
+       background-repeat: no-repeat;
+     }
+   }
